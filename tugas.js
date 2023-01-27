@@ -9,16 +9,16 @@ function createRandomArray() {
 
 // Fungsi untuk memisahkan array menjadi 2 array berdasarkan indexnya (genap dan ganjil)
 function splitArray(array) {
-    let evenArray = [];
-    let oddArray = [];
+    let arrayGanjil = [];
+    let arrayGenap = [];
     for (let i = 0; i < array.length; i++) {
         if (i % 2 === 0) {
-            evenArray.push(array[i]);
+            arrayGenap.push(array[i]);
         } else {
-            oddArray.push(array[i]);
+            arrayGanjil.push(array[i]);
         }
     }
-    return { evenArray, oddArray };
+    return { arrayGenap, arrayGanjil };
 }
 
 // Fungsi untuk mencari nilai minimum dari sebuah array
@@ -74,18 +74,18 @@ function compareArrays(array1, array2) {
     console.log("Rata-rata lebih besar pada array " + (avg1 > avg2 ? "genap" : "ganjil"));
 }
 
-// Contoh penggunaan
+// Pemanggilan
 let randomArray = createRandomArray();
 console.log("Array dengan jumlah index 100: " + randomArray);
 let splitArrays = splitArray(randomArray);
-console.log("Array genap dengan jumlah index 50: " + splitArrays.evenArray);
-console.log("Array ganjil dengan jumlah index 50: " + splitArrays.oddArray);
-console.log("Nilai minimum pada array genap: " + findMin(splitArrays.evenArray));
-console.log("Nilai maksimum pada array genap: " + findMax(splitArrays.evenArray));
-console.log("Total pada array genap: " + findTotal(splitArrays.evenArray));
-console.log("Rata-rata pada array genap: " + findAverage(splitArrays.evenArray));
-console.log("Nilai minimum pada array ganjil: " + findMin(splitArrays.oddArray));
-console.log("Nilai maksimum pada array ganjil: " + findMax(splitArrays.oddArray));
-console.log("Total pada array ganjil: " + findTotal(splitArrays.oddArray));
-console.log("Rata-rata pada array ganjil: " + findAverage(splitArrays.oddArray));
-compareArrays(splitArrays.evenArray, splitArrays.oddArray);
+console.log("Array genap dengan jumlah index 50: " + splitArrays.arrayGenap);
+console.log("Array ganjil dengan jumlah index 50: " + splitArrays.arrayGanjil);
+console.log("Nilai minimum pada array genap: " + findMin(splitArrays.arrayGenap));
+console.log("Nilai maksimum pada array genap: " + findMax(splitArrays.arrayGenap));
+console.log("Total pada array genap: " + findTotal(splitArrays.arrayGenap));
+console.log("Rata-rata pada array genap: " + findAverage(splitArrays.arrayGenap));
+console.log("Nilai minimum pada array ganjil: " + findMin(splitArrays.arrayGanjil));
+console.log("Nilai maksimum pada array ganjil: " + findMax(splitArrays.arrayGanjil));
+console.log("Total pada array ganjil: " + findTotal(splitArrays.arrayGanjil));
+console.log("Rata-rata pada array ganjil: " + findAverage(splitArrays.arrayGanjil));
+compareArrays(splitArrays.arrayGenap, splitArrays.arrayGanjil);
