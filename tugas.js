@@ -44,7 +44,7 @@ let arrays = () => {
   }
   
   let arr = arrays();
-  console.log(`Jumlah index array ${arr.array.length} : ${arr.array}`);
+  console.log(`Jumlah index array [${arr.array.length}] : ${arr.array}`);
   console.log(`Jumlah index [${arr.arrayGenap.length}] dalam array Genap : ${arr.arrayGenap}`);
   console.log(`Jumlah index [${arr.arrayGanjil.length}] dalam array Ganjil : ${arr.arrayGanjil}`);
   console.log(`nilai min berada pada array Ganjil : ${findMinMax(arr.arrayGanjil).min}`)
