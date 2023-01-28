@@ -7,7 +7,7 @@ let arrays = () => {
     }
     //kode di bawah untuk pembagian array Ganjil Genap
     for (let i = 0; i < array.length; i++) {
-      if (array[i] % 2 == 0) {
+      if (i % 2 == 0) {
         arrayGenap.push(array[i]);
       } else {
         arrayGanjil.push(array[i]);
@@ -44,9 +44,9 @@ let arrays = () => {
   }
   
   let arr = arrays();
-  console.log(`Jumlah index array 10 : ${arr.array}`);
-  console.log(`Jumlah index 10 dalam array Genap : ${arr.arrayGenap}`);
-  console.log(`Jumlah index 10 dalam array Genap : ${arr.arrayGanjil}`);
+  console.log(`Jumlah index array ${arr.array.length} : ${arr.array}`);
+  console.log(`Jumlah index [${arr.arrayGenap.length}] dalam array Genap : ${arr.arrayGenap}`);
+  console.log(`Jumlah index [${arr.arrayGanjil.length}] dalam array Ganjil : ${arr.arrayGanjil}`);
   console.log(`nilai min berada pada array Ganjil : ${findMinMax(arr.arrayGanjil).min}`)
   console.log(`nilai max berada pada array Ganjil : ${findMinMax(arr.arrayGanjil).max}`)
   console.log(`nilai min berada pada array Genap : ${findMinMax(arr.arrayGenap).min}`)
