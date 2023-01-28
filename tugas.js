@@ -1,91 +1,68 @@
-// Fungsi untuk membuat array dengan 100 nilai random
-function createRandomArray() {
-    let array = [];
+let arrays = () => {
+    let array = []
+    let arrayGanjil =[]
+    let arrayGenap = []
     for (let i = 0; i < 100; i++) {
-        array.push(Math.floor(Math.random() * 50) + 1);
+      array.push(Math.floor(Math.random() * 50) +1);
     }
-    return array;
-}
-
-// Fungsi untuk memisahkan array menjadi 2 array berdasarkan indexnya (genap dan ganjil)
-function splitArray(array) {
-    let arrayGanjil = [];
-    let arrayGenap = [];
+    //kode di bawah untuk pembagian array Ganjil Genap
     for (let i = 0; i < array.length; i++) {
-        if (i % 2 === 0) {
-            arrayGenap.push(array[i]);
-        } else {
-            arrayGanjil.push(array[i]);
-        }
+      if (array[i] % 2 == 0) {
+        arrayGenap.push(array[i]);
+      } else {
+        arrayGanjil.push(array[i]);
+      }
+      
     }
-    return { arrayGenap, arrayGanjil };
-}
-
-// Fungsi untuk mencari nilai minimum dari sebuah array
-function findMin(array) {
+    return {array, arrayGenap, arrayGanjil};
+  }
+  
+  let findMinMax = (array) =>{
     let min = array[0];
-    for (let i = 1; i < array.length; i++) {
-        if (array[i] < min) {
-            min = array[i];
-        }
-    }
-    return min;
-}
-
-// Fungsi untuk mencari nilai maksimum dari sebuah array
-function findMax(array) {
     let max = array[0];
-    for (let i = 1; i < array.length; i++) {
-        if (array[i] > max) {
-            max = array[i];
-        }
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] < min) {
+        min = array[i];
+      } else if (array[i] > max){
+        max = array[i]
+      }
+      
     }
-    return max;
-}
-
-// Fungsi untuk mencari total dari sebuah array
-function findTotal(array) {
+    return {min, max}
+  }
+  
+  let findTotal = (array) => {
     let total = 0;
     for (let i = 0; i < array.length; i++) {
-        total += array[i];
+      total += array[i];
     }
     return total;
-}
-
-// Fungsi untuk mencari rata-rata dari sebuah array
-function findAverage(array) {
+  }
+  
+  let findAvg = (array) =>{
     return findTotal(array) / array.length;
-}
-
-// Fungsi untuk membandingkan nilai min, max, total, dan rata-rata dari 2 array
-function compareArrays(array1, array2) {
-    let min1 = findMin(array1);
-    let min2 = findMin(array2);
-    let max1 = findMax(array1);
-    let max2 = findMax(array2);
-    let total1 = findTotal(array1);
-    let total2 = findTotal(array2);
-    let avg1 = findAverage(array1);
-    let avg2 = findAverage(array2);
-
-    console.log("Min lebih besar pada array " + (min1 > min2 ? "genap" : "ganjil"));
-    console.log("Max lebih besar pada array " + (max1 > max2 ? "genap" : "ganjil"));
-    console.log("Total memiliki nilai sama antara array genap dan ganjil: " + (total1 === total2));
-    console.log("Rata-rata lebih besar pada array " + (avg1 > avg2 ? "genap" : "ganjil"));
-}
-
-// Pemanggilan
-let randomArray = createRandomArray();
-console.log("Array dengan jumlah index 100: " + randomArray);
-let splitArrays = splitArray(randomArray);
-console.log("Array genap dengan jumlah index 50: " + splitArrays.arrayGenap);
-console.log("Array ganjil dengan jumlah index 50: " + splitArrays.arrayGanjil);
-console.log("Nilai minimum pada array genap: " + findMin(splitArrays.arrayGenap));
-console.log("Nilai maksimum pada array genap: " + findMax(splitArrays.arrayGenap));
-console.log("Total pada array genap: " + findTotal(splitArrays.arrayGenap));
-console.log("Rata-rata pada array genap: " + findAverage(splitArrays.arrayGenap));
-console.log("Nilai minimum pada array ganjil: " + findMin(splitArrays.arrayGanjil));
-console.log("Nilai maksimum pada array ganjil: " + findMax(splitArrays.arrayGanjil));
-console.log("Total pada array ganjil: " + findTotal(splitArrays.arrayGanjil));
-console.log("Rata-rata pada array ganjil: " + findAverage(splitArrays.arrayGanjil));
-compareArrays(splitArrays.arrayGenap, splitArrays.arrayGanjil);
+  }
+  
+  let arr = arrays();
+  console.log(`Jumlah index array 10 : ${arr.array}`);
+  console.log(`Jumlah index 10 dalam array Genap : ${arr.arrayGenap}`);
+  console.log(`Jumlah index 10 dalam array Genap : ${arr.arrayGanjil}`);
+  console.log(`nilai min berada pada array Ganjil : ${findMinMax(arr.arrayGanjil).min}`)
+  console.log(`nilai max berada pada array Ganjil : ${findMinMax(arr.arrayGanjil).max}`)
+  console.log(`nilai min berada pada array Genap : ${findMinMax(arr.arrayGenap).min}`)
+  console.log(`nilai max berada pada array Genap : ${findMinMax(arr.arrayGenap).max}`)
+  console.log(`total dalam index Ganjil :${findTotal(arr.arrayGanjil)}`)
+  console.log(`total dalam index Genap :${findTotal(arr.arrayGenap)}`)
+  console.log(`Average dalam index Ganjil : ${findAvg(arr.arrayGanjil)}`)
+  console.log(`Average dalam index Ganjil : ${findAvg(arr.arrayGenap)}`)
+  console.log(`======= COMPARE ARRAY =======`)
+  //Compare Arrays
+  console.log("Min lebih besar dari array : " + (findMinMax(arr.arrayGanjil).min < findMinMax(arr.arrayGenap).min ? "Ganjil" : "Genap"))
+  console.log("Max lebih besar dari array : " + (findMinMax(arr.arrayGanjil).max < findMinMax(arr.arrayGenap).max ? "Ganjil" : "Genap"))
+  console.log("Total memiliki nilai sama antara array genap dan ganjil : " + (findTotal(arr.arrayGenap) === findTotal(arr.arrayGanjil)))
+  console.log("Rata-rata lebih besar pada array :" + (findAvg(arr.arrayGanjil) < findAvg(arr.arrayGenap) ? "genap" : "ganjil"));
+  
+  
+  
+  
+  
